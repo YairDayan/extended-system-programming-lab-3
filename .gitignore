@@ -1,0 +1,16 @@
+# Build artifacts
+*.o
+*.out
+*.dSYM/
+task0
+task1
+task2
+task3
+
+# Course materials / local notes
+*.pdf
+*.zip
+/עבודה 3 - הגשה/
+.cursor/
+.DS_Store
+Some Linux system calls presentations*/
