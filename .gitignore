@@ -2,18 +2,17 @@
 *.o
 *.out
 *.dSYM/
-/hello
-/task0
-/task1
-/task3
+task0/task0
+task0/hello
+task1/task1
 task2/task2
-מעבדה 3 - הגשה/task0/task0
-מעבדה 3 - הגשה/task1/task1
-מעבדה 3 - הגשה/task2/task2
+
+# Local submission folder (not for GitHub)
+/מעבדה 3 - הגשה/
+*.zip
 
 # Course materials / local notes
 *.pdf
-*.zip
 .cursor/
 .DS_Store
 Some Linux system calls presentations*/
