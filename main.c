@@ -10,7 +10,7 @@
 
 extern int system_call();
 
-int main(int argc, char *argv[], char *envp[])
+int main (int argc , char* argv[], char* envp[])
 {
   /*Complete the task here*/
 
