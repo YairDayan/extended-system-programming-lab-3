@@ -10,9 +10,14 @@
 
 extern int system_call();
 
-int main (int argc , char* argv[], char* envp[])
+int main(int argc, char *argv[], char *envp[])
 {
-  /*Complete the task here*/
+  int i;
+  char newLine = '\n';
 
+  for (i = 0; i < argc; i++) {
+    system_call(SYS_WRITE, STDOUT, argv[i], strlen(argv[i]));
+    system_call(SYS_WRITE, STDOUT, &newLine, 1);
+  }
   return 0;
 }
